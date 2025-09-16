@@ -53,10 +53,9 @@ export const CatalogPanel: React.FC<CatalogPanelProps> = ({
             {catalogItems.length === 0 ? (
               <div className="text-center text-gray-500 text-sm mt-8">
                 <Database size={32} className="mx-auto mb-2 text-gray-300" />
-                <p>Aucun élément dans le catalogue</p>
+                <p>No items in the catalog</p>
                 <p className="text-xs">
-                  Sélectionnez des datasets dans l'arbre et ajoutez-les au
-                  catalogue
+                  Select datasets in the tree and add them to the catalog
                 </p>
               </div>
             ) : (

@@ -45,11 +45,11 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
               </div>
               <div className="text-xs mb-4">
                 {selectedPattern.metadata?.description ||
-                  "Aucune description disponible"}
+                  "No description available"}
               </div>
 
               <div className="text-xs mb-1">
-                <span className="font-xs">Niveau de confidentialité:</span>
+                <span className="font-xs">Privacy Level:</span>
               </div>
               <div className="text-sm mb-4">
                 <span
@@ -68,7 +68,7 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
               {selectedPattern.metadata?.techniques && (
                 <>
                   <div className="text-xs mb-1">
-                    <span className="font-normal">Techniques de protection:</span>
+                    <span className="font-normal">Protection Techniques:</span>
                   </div>
                   <div className="text-xs mb-4">
                     <div className="flex flex-wrap gap-1">
@@ -88,7 +88,7 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
               {selectedPattern.metadata?.formats && (
                 <>
                   <div className="text-xs mb-1">
-                    <span className="font-semibold">Formats disponibles:</span>
+                    <span className="font-semibold">Available Formats:</span>
                   </div>
                   <div className="text-xs mb-4">
                     <div className="flex flex-wrap gap-1">
@@ -108,11 +108,11 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
               {selectedPattern.metadata?.lastUpdate && (
                 <>
                   <div className="text-xs mb-1">
-                    <span className="font-semibold">Dernière mise à jour:</span>
+                    <span className="font-semibold">Last Update:</span>
                   </div>
                   <div className="text-xs mb-4">
                     {new Date(selectedPattern.metadata.lastUpdate).toLocaleDateString(
-                      "fr-FR",
+                      "en-US",
                       {
                         year: "numeric",
                         month: "long",
@@ -129,8 +129,8 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
         ) : (
           <div className="text-center text-gray-500 text-xs mt-8">
             <Eye size={32} className="mx-auto mb-2 text-gray-300" />
-            <p>Sélectionnez un élément du catalogue</p>
-            <p className="text-xs">pour voir ses détails</p>
+            <p>Select an item from the catalog</p>
+            <p className="text-xs">to see its details</p>
           </div>
         )}
       </div>

@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import { TreeNode } from "@/types/tree";
 import { treeData } from "@/__mock/treeDatas";
 import {
-  Badge,
-  ToggleButton,
   FilterPanel,
   CatalogPanel,
   DetailsPanel,
   DownloadsPanel,
+  Legend,
 } from "@/components";
 
 export default function Home() {
@@ -154,29 +153,12 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen w-screen bg-[#3892D3] flex flex-col overflow-hidden">
-      <div className="p-1">
-        <div className="bg-[#157FCC] text-white px-2 py-1 flex items-center justify-between rounded-xs">
-          <div className="flex items-center gap-2">
-            <span className="font-extrabold text-xs">LEGEND:</span>
-            <Badge
-              text="Pattern"
-              color="bg-yellow-400"
-              className="font-normal uppercase text-xs"
-            />
-          </div>
-          <div className="flex items-center gap-1">
-            <ToggleButton
-              options={["ISO 29100", "PATTERNS"]}
-              value={selected}
-              onChange={setSelected}
-            />
-            <button className="w-6 h-6 cursor-pointer flex items-center justify-center rounded bg-[#296A9A] border-[#3892D3] text-white font-bold text-xs">
-              ?
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="h-screen w-screen bg-[#3892D3] flex flex-col overflow-y-hidden">
+      <Legend
+        treeData={treeData}
+        selected={selected}
+        onSelectionChange={setSelected}
+      />
 
       <div className="p-1 h-full">
         <div className="flex-1 flex relative h-full gap-x-1">

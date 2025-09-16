@@ -16,18 +16,18 @@ export const DownloadsPanel: React.FC<DownloadsPanelProps> = ({
   return (
     <div className="w-80 bg-white border-l border-gray-300 relative">
       <div className="bg-[#157FCC] text-white px-4 py-2 flex items-center justify-between transition-opacity duration-300">
-        <span className="font-extrabold text-xs uppercase">téléchargements</span>
+        <span className="font-extrabold text-xs uppercase">Download</span>
       </div>
       <div className="p-4 flex flex-col h-[98%]">
         <div className="mb-4">
-          <span className="font-semibold text-xs">Datasets à télécharger</span>
+          <span className="font-semibold text-xs">Datasets to download</span>
         </div>
         <div className="flex-1 overflow-y-auto">
           {downloads.length === 0 ? (
             <div className="text-center text-gray-500 text-xs mt-8">
               <Download size={32} className="mx-auto mb-2 text-gray-300" />
-              <p>Aucun téléchargement</p>
-              <p className="text-xs">Ajoutez des éléments depuis les détails</p>
+              <p>No downloads</p>
+              <p className="text-xs">Add items from details</p>
             </div>
           ) : (
             downloads.map((item) => {

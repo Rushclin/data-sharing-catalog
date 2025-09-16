@@ -5,3 +5,4 @@ export { FilterPanel } from './FilterPanel';
 export { CatalogPanel } from './CatalogPanel';
 export { DetailsPanel } from './DetailsPanel';
 export { DownloadsPanel } from './DownloadsPanel';
+export { Legend } from './Legend';
