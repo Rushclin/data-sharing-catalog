@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Rnd } from "react-rnd";
 
 import React from "react";
@@ -11,55 +11,14 @@ import {
   ChevronDown,
   Folder,
   FolderOpen,
-  Camera,
-  Wifi,
-  Mic,
-  Smartphone,
-  MapPin,
-  Shield,
   Database,
   Eye,
-  Settings,
-  Users,
   Download,
-  Plus,
-  LucideIcon,
   PlusSquare,
   X,
 } from "lucide-react";
-
-// Types pour les données de l'arbre
-interface TreeNodeMetadata {
-  privacy?: "HIGH_SENSITIVE" | "MODERATE" | "LOW";
-  status?: string;
-  size?: string;
-  techniques?: string[];
-  formats?: string[];
-  lastUpdate?: string;
-  description?: string;
-  datasets_count?: number;
-  epsilon_range?: string;
-  k_values?: string;
-  capacity?: string;
-  schemes?: string[];
-  frameworks?: string[];
-}
-
-interface TreeNode {
-  id: string;
-  label: string;
-  type:
-    | "root"
-    | "city"
-    | "category"
-    | "zone"
-    | "dataset"
-    | "technique"
-    | "infrastructure";
-  icon?: LucideIcon;
-  metadata?: TreeNodeMetadata;
-  children?: TreeNode[];
-}
+import { TreeNode } from "@/types/tree";
+import { treeData } from "@/__mock/treeDatas";
 
 interface BadgeProps {
   color?: string; // ex: "bg-yellow-400"
@@ -117,225 +76,6 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
   );
 };
 
-// Tree data structure from Tree.jsx
-const treeData: TreeNode = {
-  id: "root",
-  label: "Catalogue CrowdMesh - Données Edge-Cloud",
-  type: "root",
-  children: [
-    {
-      id: "paris",
-      label: "Paris",
-      type: "city",
-      icon: MapPin,
-      children: [
-        {
-          id: "paris_zones",
-          label: "Zones de Surveillance",
-          type: "category",
-          icon: Folder,
-          children: [
-            {
-              id: "paris_zone_a",
-              label: "Zone A - Centre Commercial Les Halles",
-              type: "zone",
-              icon: Camera,
-              metadata: {
-                privacy: "HIGH_SENSITIVE",
-                status: "active",
-                size: "2.3 GB",
-              },
-              children: [
-                {
-                  id: "paris_zone_a_cam",
-                  label: "Caméras de Surveillance (12 unités)",
-                  type: "dataset",
-                  icon: Camera,
-                  metadata: {
-                    privacy: "HIGH_SENSITIVE",
-                    techniques: ["face_blurring", "differential_privacy"],
-                    formats: ["heatmap", "density_stats"],
-                    lastUpdate: "2025-09-15T14:30:00Z",
-                    description:
-                      "Données anonymisées de surveillance avec floutage facial et confidentialité différentielle",
-                  },
-                },
-                {
-                  id: "paris_zone_a_wifi",
-                  label: "Détecteurs WiFi (8 points)",
-                  type: "dataset",
-                  icon: Wifi,
-                  metadata: {
-                    privacy: "HIGH_SENSITIVE",
-                    techniques: ["mac_randomization", "k_anonymity"],
-                    formats: ["presence_heatmap", "flow_patterns"],
-                    lastUpdate: "2025-09-15T14:25:00Z",
-                    description:
-                      "Patterns de flux anonymisés avec randomisation MAC et k-anonymat",
-                  },
-                },
-                {
-                  id: "paris_zone_a_audio",
-                  label: "Capteurs Audio Ambiants (6 unités)",
-                  type: "dataset",
-                  icon: Mic,
-                  metadata: {
-                    privacy: "MODERATE",
-                    techniques: ["audio_anonymization", "decibel_aggregation"],
-                    formats: ["noise_levels", "crowd_density_audio"],
-                    lastUpdate: "2025-09-15T14:20:00Z",
-                    description:
-                      "Analyse acoustique anonymisée pour estimation de densité",
-                  },
-                },
-              ],
-            },
-            {
-              id: "paris_zone_b",
-              label: "Zone B - Gare du Nord",
-              type: "zone",
-              icon: Camera,
-              metadata: {
-                privacy: "HIGH_SENSITIVE",
-                status: "active",
-                size: "4.1 GB",
-              },
-              children: [
-                {
-                  id: "paris_zone_b_cam",
-                  label: "Caméras Haute Définition (24 unités)",
-                  type: "dataset",
-                  icon: Camera,
-                  metadata: {
-                    privacy: "HIGH_SENSITIVE",
-                    techniques: [
-                      "real_time_anonymization",
-                      "differential_privacy",
-                    ],
-                    formats: ["anonymized_tracks", "flow_analysis"],
-                    description:
-                      "Tracking anonymisé en temps réel avec analyse de flux",
-                  },
-                },
-                {
-                  id: "paris_zone_b_mobile",
-                  label: "Analytics Mobile (Bluetooth/WiFi)",
-                  type: "dataset",
-                  icon: Smartphone,
-                  metadata: {
-                    privacy: "HIGH_SENSITIVE",
-                    techniques: ["temporal_blur", "spatial_cloaking"],
-                    formats: ["mobility_patterns", "dwell_time_stats"],
-                    description:
-                      "Patterns de mobilité avec masquage temporel et spatial",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "lyon",
-      label: "Lyon",
-      type: "city",
-      icon: MapPin,
-      children: [
-        {
-          id: "lyon_zones",
-          label: "Zones de Surveillance",
-          type: "category",
-          icon: Folder,
-          children: [
-            {
-              id: "lyon_zone_centre",
-              label: "Zone Centre - Place Bellecour",
-              type: "zone",
-              icon: Camera,
-              metadata: {
-                privacy: "HIGH_SENSITIVE",
-                status: "active",
-                size: "3.2 GB",
-              },
-              children: [
-                {
-                  id: "lyon_centre_cam",
-                  label: "Système de Surveillance Intégré",
-                  type: "dataset",
-                  icon: Camera,
-                  metadata: {
-                    privacy: "HIGH_SENSITIVE",
-                    techniques: ["real_time_masking", "k_anonymity"],
-                    formats: ["crowd_flow_analysis", "safety_metrics"],
-                    description:
-                      "Surveillance intégrée avec masquage temps réel",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "techniques_privacy",
-      label: "Techniques de Protection Appliquées",
-      type: "category",
-      icon: Shield,
-      children: [
-        {
-          id: "differential_privacy",
-          label: "Differential Privacy",
-          type: "technique",
-          icon: Shield,
-          metadata: {
-            datasets_count: 8,
-            epsilon_range: "0.1 - 1.0",
-            description: "Protection probabiliste contre la réidentification",
-          },
-        },
-        {
-          id: "k_anonymity",
-          label: "K-Anonymity",
-          type: "technique",
-          icon: Shield,
-          metadata: {
-            datasets_count: 12,
-            k_values: "5 - 50",
-            description: "Garantie de non-distinguabilité dans un groupe",
-          },
-        },
-      ],
-    },
-  ],
-};
-
-// const mockFilterItems = [
-//   {
-//     category: "PERMISSIONS",
-//     items: [
-//       "Access Control",
-//       "Encryption",
-//       "Handling Unusual Account Activities with Private Link",
-//       "Secure Passwords",
-//       "Selective Access Control",
-//       "Active Broadcast Protection",
-//     ],
-//   },
-//   { category: "Anonymization", items: [] },
-//   { category: "Asynchronous Notice", items: [] },
-//   { category: "Auditing", items: [] },
-//   { category: "Credential Selection", items: [] },
-//   { category: "Data Breach Notifications", items: [] },
-//   { category: "Informed Consent", items: [] },
-//   { category: "Platform for Privacy Preferences Project (P3P)", items: [] },
-//   { category: "Privacy Dashboard", items: [] },
-//   { category: "Select Before You Collect", items: [] },
-//   { category: "Sticky Policies", items: [] },
-//   { category: "Trust Evaluation of Services Sides", items: [] },
-// ];
-
 export default function Home() {
   const [isFilterCollapsed, setIsFilterCollapsed] = useState<boolean>(false);
   const [filterWidth, setFilterWidth] = useState<number>(280);
@@ -343,13 +83,23 @@ export default function Home() {
   const [selectedPattern, setSelectedPattern] = useState<TreeNode | null>(null);
   const [selected, setSelected] = useState<string>("ISO 29100");
 
-  // Tree functionality states
   const [expandedNodes, setExpandedNodes] = useState<Set<string>>(
     new Set(["root", "paris", "paris_zones", "lyon"])
   );
   const [selectedNodes, setSelectedNodes] = useState<Set<string>>(new Set());
   const [catalogItems, setCatalogItems] = useState<TreeNode[]>([]);
   const [downloads, setDownloads] = useState<TreeNode[]>([]);
+
+  useEffect(() => {
+    const catalogDatasetIds = catalogItems.map((item) => item.id);
+    const newSelected = new Set(selectedNodes);
+
+    catalogDatasetIds.forEach((id) => {
+      newSelected.add(id);
+    });
+
+    setSelectedNodes(newSelected);
+  }, [catalogItems]);
 
   const toggleFilter = () => {
     setIsFilterCollapsed(!isFilterCollapsed);
@@ -371,13 +121,92 @@ export default function Home() {
     setExpandedNodes(newExpanded);
   };
 
+  // Fonction récursive pour collecter tous les datasets enfants
+  const collectDatasets = (node: TreeNode): TreeNode[] => {
+    let datasets: TreeNode[] = [];
+
+    if (node.type === "dataset") {
+      datasets.push(node);
+    }
+
+    if (node.children) {
+      node.children.forEach((child) => {
+        datasets = datasets.concat(collectDatasets(child));
+      });
+    }
+
+    return datasets;
+  };
+
   const toggleSelection = (nodeId: string): void => {
+    const node = findNodeById(nodeId);
+    if (!node) return;
+
     const newSelected = new Set(selectedNodes);
+
     if (newSelected.has(nodeId)) {
       newSelected.delete(nodeId);
+
+      // Si c'est un dataset, le retirer du catalogue
+      if (node.type === "dataset") {
+        setCatalogItems((prev) => prev.filter((item) => item.id !== nodeId));
+        // Si c'était le pattern sélectionné, le désélectionner
+        if (selectedPattern?.id === nodeId) {
+          setSelectedPattern(null);
+        }
+      }
+
+      // Si c'est un dossier, décocher tous ses datasets enfants
+      if (
+        node.type === "category" ||
+        node.type === "zone" ||
+        node.type === "city"
+      ) {
+        const childDatasets = collectDatasets(node);
+        childDatasets.forEach((dataset) => {
+          newSelected.delete(dataset.id);
+          setCatalogItems((prev) =>
+            prev.filter((item) => item.id !== dataset.id)
+          );
+          // Si c'était le pattern sélectionné, le désélectionner
+          if (selectedPattern?.id === dataset.id) {
+            setSelectedPattern(null);
+          }
+        });
+      }
     } else {
       newSelected.add(nodeId);
+
+      // Si c'est un dataset, l'ajouter automatiquement au catalogue
+      if (
+        node.type === "dataset" &&
+        !catalogItems.some((item) => item.id === nodeId)
+      ) {
+        setCatalogItems((prev) => [...prev, node]);
+      }
+
+      // Si c'est un dossier, cocher et ajouter tous ses datasets enfants
+      if (
+        node.type === "category" ||
+        node.type === "zone" ||
+        node.type === "city"
+      ) {
+        const childDatasets = collectDatasets(node);
+        const newDatasets: TreeNode[] = [];
+
+        childDatasets.forEach((dataset) => {
+          newSelected.add(dataset.id);
+          if (!catalogItems.some((item) => item.id === dataset.id)) {
+            newDatasets.push(dataset);
+          }
+        });
+
+        if (newDatasets.length > 0) {
+          setCatalogItems((prev) => [...prev, ...newDatasets]);
+        }
+      }
     }
+
     setSelectedNodes(newSelected);
   };
 
@@ -394,7 +223,6 @@ export default function Home() {
     }
   };
 
-  // Function to find a node by ID
   const findNodeById = (
     nodeId: string,
     node: TreeNode = treeData
@@ -407,23 +235,6 @@ export default function Home() {
       }
     }
     return null;
-  };
-
-  // Add selected items to catalog
-  const addToCatalog = (): void => {
-    const selectedItems = Array.from(selectedNodes)
-      .map((nodeId) => findNodeById(nodeId))
-      .filter(
-        (node): node is TreeNode => node !== null && node.type === "dataset"
-      );
-
-    setCatalogItems((prev) => [
-      ...prev,
-      ...selectedItems.filter(
-        (item) => !prev.some((existing) => existing.id === item.id)
-      ),
-    ]);
-    setSelectedNodes(new Set());
   };
 
   // Add to downloads
@@ -439,7 +250,10 @@ export default function Home() {
   };
 
   // Render tree node
-  const renderNode = (node: TreeNode, depth: number = 0): JSX.Element => {
+  const renderNode = (
+    node: TreeNode,
+    depth: number = 0
+  ): React.ReactElement => {
     const isExpanded = expandedNodes.has(node.id);
     const isSelected = selectedNodes.has(node.id);
     const hasChildren = node.children && node.children.length > 0;
@@ -469,7 +283,6 @@ export default function Home() {
             )}
           </div>
 
-          {/* Checkbox */}
           <input
             type="checkbox"
             checked={isSelected}
@@ -477,7 +290,6 @@ export default function Home() {
             className="mr-1 h-3 w-3 text-blue-600"
           />
 
-          {/* Node Icon */}
           <div className="mr-1">
             {node.type === "category" || node.type === "zone" ? (
               isExpanded ? (
@@ -526,7 +338,7 @@ export default function Home() {
         {/* Children */}
         {hasChildren && isExpanded && (
           <div>
-            {node.children.map((child) => renderNode(child, depth + 1))}
+            {node.children?.map((child) => renderNode(child, depth + 1))}
           </div>
         )}
       </div>
@@ -598,21 +410,8 @@ export default function Home() {
 
                 <div className="flex-1 overflow-hidden">
                   {!isFilterCollapsed ? (
-                    <div className="flex flex-col h-full">
-                      <div className="p-2 overflow-y-auto flex-1">
-                        {renderNode(treeData)}
-                      </div>
-                      {selectedNodes.size > 0 && (
-                        <div className="p-2 border-t bg-gray-50">
-                          <button
-                            onClick={addToCatalog}
-                            className="w-full px-2 py-1 bg-[#3892D3] text-white rounded text-xs cursor-pointer flex items-center justify-center gap-1"
-                          >
-                            <Plus size={12} />
-                            Ajouter au catalogue ({selectedNodes.size})
-                          </button>
-                        </div>
-                      )}
+                    <div className="p-2 overflow-y-auto h-full">
+                      {renderNode(treeData)}
                     </div>
                   ) : (
                     <div className="bg-[#157FCC] h-full flex flex-col transition-all duration-200">
@@ -677,7 +476,9 @@ export default function Home() {
                           key={item.id}
                           onClick={() => setSelectedPattern(item)}
                           className={`flex items-center gap-2 p-2 mb-1 cursor-pointer hover:bg-blue-50 rounded ${
-                            selectedPattern?.id === item.id ? "bg-[#C1DDF1]" : ""
+                            selectedPattern?.id === item.id
+                              ? "bg-[#C1DDF1]"
+                              : ""
                           }`}
                         >
                           <IconComponent
@@ -831,18 +632,18 @@ export default function Home() {
             </div>
 
             {selectedPattern && (
-              <div className="absolute bottom-1 right-1">
+              <div className="absolute bottom-4 right-4">
                 <button
                   onClick={() => addToDownloads(selectedPattern)}
-                  className="cursor-pointer px-7 py-1 text-white rounded bg-[#3892D3]  flex items-center"
+                  className="w-12 h-8 bg-[#3892D3] text-white rounded flex items-center justify-center hover:bg-[#2d7bb8] transition-colors"
                 >
-                  <PlusSquare className="h-4 w-4"/>
+                  <PlusSquare size={16} />
                 </button>
               </div>
             )}
           </div>
 
-          <div className="w-80 bg-white border-l border-gray-300">
+          <div className="w-80 bg-white border-l border-gray-300 relative">
             <div className="bg-[#157FCC] text-white px-4 py-2 flex items-center justify-between transition-opacity duration-300">
               <span className="font-extrabold text-xs uppercase">
                 téléchargements
@@ -890,7 +691,7 @@ export default function Home() {
                           onClick={() => removeFromDownloads(item.id)}
                           className="ml-auto text-red-500 hover:bg-red-50 p-1 rounded cursor-pointer"
                         >
-                          <X className="h-3 w-3"/>
+                          <X className="h-3 w-3" />
                         </button>
                       </div>
                     );
@@ -898,8 +699,8 @@ export default function Home() {
                 )}
               </div>
               {downloads.length > 0 && (
-                <div className="">
-                  <button className="w-full bg-[#3892D3] text-white px-3 py-2 rounded flex items-center justify-center gap-2">
+                <div className="absolute bottom-4 right-4">
+                  <button className="w-12 h-8 bg-[#3892D3] text-white rounded flex items-center justify-center hover:bg-[#2d7bb8] transition-colors">
                     <Download size={16} />
                   </button>
                 </div>
