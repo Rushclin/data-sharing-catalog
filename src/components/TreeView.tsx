@@ -38,7 +38,6 @@ export const TreeView: React.FC<TreeViewProps> = ({
           }`}
           style={{ paddingLeft: `${depth * 12 + 8}px` }}
         >
-          {/* Expand/Collapse Icon */}
           <div className="w-3 h-3 flex items-center justify-center mr-1">
             {hasChildren && (
               <button
@@ -54,7 +53,6 @@ export const TreeView: React.FC<TreeViewProps> = ({
             )}
           </div>
 
-          {/* Checkbox */}
           <input
             type="checkbox"
             checked={isSelected}
@@ -62,7 +60,6 @@ export const TreeView: React.FC<TreeViewProps> = ({
             className="mr-1 h-3 w-3 text-blue-600"
           />
 
-          {/* Node Icon */}
           <div className="mr-1">
             {node.type === "category" || node.type === "zone" ? (
               isExpanded ? (
@@ -82,10 +79,8 @@ export const TreeView: React.FC<TreeViewProps> = ({
             )}
           </div>
 
-          {/* Node Label */}
           <span className="flex-1 text-xs truncate">{node.label}</span>
 
-          {/* Metadata Badges */}
           {node.metadata && (
             <div className="ml-1 flex gap-1">
               {node.metadata.privacy && (
@@ -109,7 +104,6 @@ export const TreeView: React.FC<TreeViewProps> = ({
           )}
         </div>
 
-        {/* Children */}
         {hasChildren && isExpanded && (
           <div>
             {node.children?.map((child) => renderNode(child, depth + 1))}

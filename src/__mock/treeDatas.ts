@@ -35,6 +35,9 @@ export const treeData: TreeNode = {
           label: "Surveillance Zones",
           type: "category",
           icon: Folder,
+          metadata: {
+            description: "Comprehensive surveillance zones across Paris with privacy-preserving monitoring",
+          },
           children: [
             {
               id: "paris_zone_a",
@@ -45,6 +48,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "2.3 GB",
+                description: "High-traffic shopping area with comprehensive surveillance infrastructure",
+                lastUpdate: "2025-09-15T14:30:00Z",
               },
               children: [
                 {
@@ -110,6 +115,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "4.1 GB",
+                description: "Major transportation hub requiring advanced crowd monitoring and safety systems",
+                lastUpdate: "2025-09-15T14:00:00Z",
               },
               children: [
                 {
@@ -175,6 +182,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "6.8 GB",
+                description: "High-profile event area requiring sophisticated crowd management during public gatherings",
+                lastUpdate: "2025-09-15T13:20:00Z",
               },
               children: [
                 {
@@ -225,6 +234,9 @@ export const treeData: TreeNode = {
           label: "Edge Computing Infrastructure",
           type: "category",
           icon: Settings,
+          metadata: {
+            description: "Distributed edge computing nodes providing local data processing and privacy protection",
+          },
           children: [
             {
               id: "paris_edge_1",
@@ -232,9 +244,12 @@ export const treeData: TreeNode = {
               type: "infrastructure",
               icon: Database,
               metadata: {
+                privacy: "MODERATE",
                 status: "operational",
                 capacity: "85%",
                 techniques: ["local_differential_privacy", "federated_learning"],
+                formats: ["edge_analytics", "federated_models"],
+                lastUpdate: "2025-09-15T12:00:00Z",
                 description: "Multi-access Edge Computing node with privacy-preserving capabilities",
               },
             },
@@ -244,9 +259,12 @@ export const treeData: TreeNode = {
               type: "infrastructure",
               icon: Database,
               metadata: {
+                privacy: "MODERATE",
                 status: "operational",
                 capacity: "72%",
                 techniques: ["homomorphic_encryption", "secure_aggregation"],
+                formats: ["encrypted_computation", "secure_analytics"],
+                lastUpdate: "2025-09-15T11:30:00Z",
                 description: "High-capacity edge node with secure computation capabilities",
               },
             },
@@ -256,9 +274,12 @@ export const treeData: TreeNode = {
               type: "infrastructure",
               icon: Database,
               metadata: {
+                privacy: "MODERATE",
                 status: "operational",
                 capacity: "68%",
                 techniques: ["distributed_analytics", "privacy_preserving_aggregation"],
+                formats: ["fog_analytics", "distributed_insights"],
+                lastUpdate: "2025-09-15T10:45:00Z",
                 description: "Intermediate fog layer for distributed privacy-preserving analytics",
               },
             },
@@ -277,6 +298,9 @@ export const treeData: TreeNode = {
           label: "Surveillance Zones",
           type: "category",
           icon: Folder,
+          metadata: {
+            description: "Urban surveillance zones in Lyon with integrated crowd management systems",
+          },
           children: [
             {
               id: "lyon_zone_centre",
@@ -287,6 +311,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "3.2 GB",
+                description: "Historic city center with integrated surveillance for public safety",
+                lastUpdate: "2025-09-15T12:45:00Z",
               },
               children: [
                 {
@@ -326,6 +352,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "2.7 GB",
+                description: "Multi-modal transport station with integrated passenger flow monitoring",
+                lastUpdate: "2025-09-15T10:45:00Z",
               },
               children: [
                 {
@@ -363,6 +391,9 @@ export const treeData: TreeNode = {
           label: "Edge Infrastructure",
           type: "category",
           icon: Settings,
+          metadata: {
+            description: "Regional edge computing infrastructure for privacy-preserving analytics",
+          },
           children: [
             {
               id: "lyon_edge_1",
@@ -370,9 +401,12 @@ export const treeData: TreeNode = {
               type: "infrastructure",
               icon: Database,
               metadata: {
+                privacy: "MODERATE",
                 status: "operational",
                 capacity: "78%",
                 techniques: ["edge_analytics", "privacy_by_design"],
+                formats: ["regional_analytics", "privacy_reports"],
+                lastUpdate: "2025-09-15T09:15:00Z",
                 description: "Regional edge computing hub with privacy-by-design architecture",
               },
             },
@@ -391,6 +425,9 @@ export const treeData: TreeNode = {
           label: "Event & Stadium Zones",
           type: "category",
           icon: Folder,
+          metadata: {
+            description: "Specialized monitoring zones for large events and stadium crowd management",
+          },
           children: [
             {
               id: "marseille_velodrome",
@@ -401,6 +438,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "8.4 GB",
+                description: "Major sports venue with comprehensive crowd safety and flow management systems",
+                lastUpdate: "2025-09-14T20:45:00Z",
               },
               children: [
                 {
@@ -453,6 +492,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "5.1 GB",
+                description: "Historic port area hosting festivals and public events requiring aerial monitoring",
+                lastUpdate: "2025-09-15T09:30:00Z",
               },
               children: [
                 {
@@ -498,6 +539,9 @@ export const treeData: TreeNode = {
           label: "Public Spaces & Events",
           type: "category",
           icon: Folder,
+          metadata: {
+            description: "Public space monitoring with advanced 5G-based crowd analytics",
+          },
           children: [
             {
               id: "nice_promenade",
@@ -508,6 +552,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "4.6 GB",
+                description: "Famous waterfront promenade with high pedestrian traffic and privacy-preserving monitoring",
+                lastUpdate: "2025-09-15T13:00:00Z",
               },
               children: [
                 {
@@ -547,6 +593,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "seasonal",
                 size: "12.3 GB",
+                description: "Major cultural event requiring comprehensive multi-modal monitoring and sentiment analysis",
+                lastUpdate: "2025-09-10T16:00:00Z",
               },
               children: [
                 {
@@ -592,6 +640,9 @@ export const treeData: TreeNode = {
           label: "Urban Centers",
           type: "category",
           icon: Folder,
+          metadata: {
+            description: "Smart city center monitoring with environmental correlation analysis",
+          },
           children: [
             {
               id: "toulouse_capitole",
@@ -602,6 +653,8 @@ export const treeData: TreeNode = {
                 privacy: "HIGH_SENSITIVE",
                 status: "active",
                 size: "3.8 GB",
+                description: "Central city square with smart infrastructure and environmental monitoring",
+                lastUpdate: "2025-09-15T14:00:00Z",
               },
               children: [
                 {
@@ -650,6 +703,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 18,
             epsilon_range: "0.1 - 1.0",
+            lastUpdate: "2025-09-15T16:00:00Z",
             description: "Probabilistic protection against re-identification attacks",
           },
         },
@@ -661,6 +715,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 24,
             k_values: "5 - 50",
+            lastUpdate: "2025-09-15T15:45:00Z",
             description: "Non-distinguishability guarantee within groups of k individuals",
           },
         },
@@ -672,6 +727,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 12,
             schemes: ["Paillier", "BGV", "CKKS"],
+            lastUpdate: "2025-09-15T15:30:00Z",
             description: "Computation on encrypted data without requiring decryption",
           },
         },
@@ -683,6 +739,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 15,
             frameworks: ["TensorFlow Federated", "PySyft", "Flower"],
+            lastUpdate: "2025-09-15T15:15:00Z",
             description: "Distributed machine learning without data centralization",
           },
         },
@@ -694,6 +751,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 8,
             schemes: ["BGW", "GMW", "ABY"],
+            lastUpdate: "2025-09-15T15:00:00Z",
             description: "Joint computation on private inputs without revealing them",
           },
         },
@@ -705,6 +763,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 14,
             frameworks: ["GANs", "VAEs", "DP-WGAN"],
+            lastUpdate: "2025-09-15T14:45:00Z",
             description: "Privacy-preserving synthetic data generation for analysis",
           },
         },
@@ -716,6 +775,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 16,
             techniques: ["temporal_blur", "sliding_window_dp"],
+            lastUpdate: "2025-09-15T14:30:00Z",
             description: "Time-based privacy protection for streaming data",
           },
         },
@@ -727,6 +787,7 @@ export const treeData: TreeNode = {
           metadata: {
             datasets_count: 20,
             techniques: ["location_cloaking", "geo_indistinguishability"],
+            lastUpdate: "2025-09-15T14:15:00Z",
             description: "Location privacy through spatial obfuscation techniques",
           },
         },
