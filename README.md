@@ -82,10 +82,11 @@ The application uses a hierarchical tree structure representing:
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+
+- Node.js 18+ (for local development)
+- Docker & Docker Compose (for containerized deployment)
 - npm, yarn, pnpm, or bun
 
-### Installation
+### Local Development
 ```bash
 # Install dependencies
 npm install
@@ -95,6 +96,41 @@ npm install react-rnd
 
 # Start development server
 npm run dev
+```
+
+### Docker Deployment
+
+#### Production Build
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Or build manually
+docker build -t crowdmesh-catalog .
+docker run -p 3000:3000 crowdmesh-catalog
+```
+
+#### Development with Hot Reload
+```bash
+# Run development environment with volume mounting
+docker-compose --profile dev up --build
+
+# Access at http://localhost:3001 for dev environment
+```
+
+#### Docker Commands
+```bash
+# Build production image
+docker build -t crowdmesh-catalog .
+
+# Run production container
+docker run -d -p 3000:3000 --name catalog crowdmesh-catalog
+
+# View logs
+docker logs catalog
+
+# Stop and remove
+docker stop catalog && docker rm catalog
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
