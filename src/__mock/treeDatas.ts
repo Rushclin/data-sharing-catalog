@@ -1,9 +1,27 @@
 import { TreeNode } from "@/types/tree";
-import { Camera, Folder, MapPin, Mic, Shield, Smartphone, Wifi } from "lucide-react";
+import { 
+  Camera, 
+  Folder, 
+  MapPin, 
+  Mic, 
+  Shield, 
+  Smartphone, 
+  Wifi,
+  Thermometer,
+  Radio,
+  AlertTriangle,
+  Users,
+  Activity,
+  Database,
+  Settings,
+  Zap,
+  Eye,
+  Navigation
+} from "lucide-react";
 
 export const treeData: TreeNode = {
   id: "root",
-  label: "Catalogue CrowdMesh - Données Edge-Cloud",
+  label: "CrowdMesh Catalog - Edge-Cloud Data",
   type: "root",
   children: [
     {
@@ -14,13 +32,13 @@ export const treeData: TreeNode = {
       children: [
         {
           id: "paris_zones",
-          label: "Zones de Surveillance",
+          label: "Surveillance Zones",
           type: "category",
           icon: Folder,
           children: [
             {
               id: "paris_zone_a",
-              label: "Zone A - Centre Commercial Les Halles",
+              label: "Zone A - Les Halles Shopping Center",
               type: "zone",
               icon: Camera,
               metadata: {
@@ -31,7 +49,7 @@ export const treeData: TreeNode = {
               children: [
                 {
                   id: "paris_zone_a_cam",
-                  label: "Caméras de Surveillance (12 unités)",
+                  label: "Surveillance Cameras (12 units)",
                   type: "dataset",
                   icon: Camera,
                   metadata: {
@@ -39,13 +57,12 @@ export const treeData: TreeNode = {
                     techniques: ["face_blurring", "differential_privacy"],
                     formats: ["heatmap", "density_stats"],
                     lastUpdate: "2025-09-15T14:30:00Z",
-                    description:
-                      "Données anonymisées de surveillance avec floutage facial et confidentialité différentielle",
+                    description: "Anonymized surveillance data with facial blurring and differential privacy",
                   },
                 },
                 {
                   id: "paris_zone_a_wifi",
-                  label: "Détecteurs WiFi (8 points)",
+                  label: "WiFi Detectors (8 points)",
                   type: "dataset",
                   icon: Wifi,
                   metadata: {
@@ -53,13 +70,12 @@ export const treeData: TreeNode = {
                     techniques: ["mac_randomization", "k_anonymity"],
                     formats: ["presence_heatmap", "flow_patterns"],
                     lastUpdate: "2025-09-15T14:25:00Z",
-                    description:
-                      "Patterns de flux anonymisés avec randomisation MAC et k-anonymat",
+                    description: "Anonymized flow patterns with MAC randomization and k-anonymity",
                   },
                 },
                 {
                   id: "paris_zone_a_audio",
-                  label: "Capteurs Audio Ambiants (6 unités)",
+                  label: "Ambient Audio Sensors (6 units)",
                   type: "dataset",
                   icon: Mic,
                   metadata: {
@@ -67,8 +83,20 @@ export const treeData: TreeNode = {
                     techniques: ["audio_anonymization", "decibel_aggregation"],
                     formats: ["noise_levels", "crowd_density_audio"],
                     lastUpdate: "2025-09-15T14:20:00Z",
-                    description:
-                      "Analyse acoustique anonymisée pour estimation de densité",
+                    description: "Anonymized acoustic analysis for density estimation",
+                  },
+                },
+                {
+                  id: "paris_zone_a_pressure",
+                  label: "Floor Pressure Sensors (24 units)",
+                  type: "dataset",
+                  icon: Activity,
+                  metadata: {
+                    privacy: "LOW",
+                    techniques: ["temporal_aggregation", "spatial_binning"],
+                    formats: ["pressure_heatmap", "crowd_density_pressure"],
+                    lastUpdate: "2025-09-15T14:15:00Z",
+                    description: "Crowd density estimation through floor pressure analysis",
                   },
                 },
               ],
@@ -86,34 +114,153 @@ export const treeData: TreeNode = {
               children: [
                 {
                   id: "paris_zone_b_cam",
-                  label: "Caméras Haute Définition (24 unités)",
+                  label: "High Definition Cameras (24 units)",
                   type: "dataset",
                   icon: Camera,
                   metadata: {
                     privacy: "HIGH_SENSITIVE",
-                    techniques: [
-                      "real_time_anonymization",
-                      "differential_privacy",
-                    ],
+                    techniques: ["real_time_anonymization", "differential_privacy"],
                     formats: ["anonymized_tracks", "flow_analysis"],
-                    description:
-                      "Tracking anonymisé en temps réel avec analyse de flux",
+                    lastUpdate: "2025-09-15T13:45:00Z",
+                    description: "Real-time anonymized tracking with flow analysis",
                   },
                 },
                 {
                   id: "paris_zone_b_mobile",
-                  label: "Analytics Mobile (Bluetooth/WiFi)",
+                  label: "Mobile Analytics (Bluetooth/WiFi)",
                   type: "dataset",
                   icon: Smartphone,
                   metadata: {
                     privacy: "HIGH_SENSITIVE",
                     techniques: ["temporal_blur", "spatial_cloaking"],
                     formats: ["mobility_patterns", "dwell_time_stats"],
-                    description:
-                      "Patterns de mobilité avec masquage temporel et spatial",
+                    lastUpdate: "2025-09-15T13:40:00Z",
+                    description: "Mobility patterns with temporal and spatial masking",
+                  },
+                },
+                {
+                  id: "paris_zone_b_stampede",
+                  label: "Stampede Detection System",
+                  type: "dataset",
+                  icon: AlertTriangle,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["federated_learning", "homomorphic_encryption"],
+                    formats: ["risk_assessment", "emergency_alerts"],
+                    lastUpdate: "2025-09-15T14:00:00Z",
+                    description: "Early stampede detection with privacy-preserving ML",
+                  },
+                },
+                {
+                  id: "paris_zone_b_thermal",
+                  label: "Thermal Imaging Cameras (16 units)",
+                  type: "dataset",
+                  icon: Thermometer,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["thermal_anonymization", "crowd_counting"],
+                    formats: ["people_count", "temperature_heatmap"],
+                    lastUpdate: "2025-09-15T13:35:00Z",
+                    description: "Privacy-preserving crowd counting via thermal imaging",
                   },
                 },
               ],
+            },
+            {
+              id: "paris_zone_c",
+              label: "Zone C - Champs-Élysées Events",
+              type: "zone",
+              icon: Users,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "active",
+                size: "6.8 GB",
+              },
+              children: [
+                {
+                  id: "paris_zone_c_lidar",
+                  label: "LiDAR Crowd Monitoring (10 units)",
+                  type: "dataset",
+                  icon: Navigation,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["3d_anonymization", "trajectory_masking"],
+                    formats: ["3d_crowd_map", "movement_vectors"],
+                    lastUpdate: "2025-09-15T12:30:00Z",
+                    description: "3D crowd analysis with trajectory anonymization",
+                  },
+                },
+                {
+                  id: "paris_zone_c_emergency",
+                  label: "Emergency Response Coordination",
+                  type: "dataset",
+                  icon: AlertTriangle,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["secure_multiparty_computation", "encrypted_communication"],
+                    formats: ["evacuation_routes", "response_metrics"],
+                    lastUpdate: "2025-09-15T13:15:00Z",
+                    description: "Secure emergency coordination with encrypted protocols",
+                  },
+                },
+                {
+                  id: "paris_zone_c_social_distancing",
+                  label: "Social Distancing Compliance",
+                  type: "dataset",
+                  icon: Users,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["distance_estimation", "privacy_preserving_counting"],
+                    formats: ["distancing_compliance", "density_warnings"],
+                    lastUpdate: "2025-09-15T13:20:00Z",
+                    description: "Privacy-aware social distancing compliance monitoring",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: "paris_edge_infrastructure",
+          label: "Edge Computing Infrastructure",
+          type: "category",
+          icon: Settings,
+          children: [
+            {
+              id: "paris_edge_1",
+              label: "Edge Node 1 - Les Halles MEC",
+              type: "infrastructure",
+              icon: Database,
+              metadata: {
+                status: "operational",
+                capacity: "85%",
+                techniques: ["local_differential_privacy", "federated_learning"],
+                description: "Multi-access Edge Computing node with privacy-preserving capabilities",
+              },
+            },
+            {
+              id: "paris_edge_2",
+              label: "Edge Node 2 - Gare du Nord MEC", 
+              type: "infrastructure",
+              icon: Database,
+              metadata: {
+                status: "operational",
+                capacity: "72%",
+                techniques: ["homomorphic_encryption", "secure_aggregation"],
+                description: "High-capacity edge node with secure computation capabilities",
+              },
+            },
+            {
+              id: "paris_fog_layer",
+              label: "Fog Computing Layer - Central Paris",
+              type: "infrastructure",
+              icon: Database,
+              metadata: {
+                status: "operational",
+                capacity: "68%",
+                techniques: ["distributed_analytics", "privacy_preserving_aggregation"],
+                description: "Intermediate fog layer for distributed privacy-preserving analytics",
+              },
             },
           ],
         },
@@ -127,7 +274,7 @@ export const treeData: TreeNode = {
       children: [
         {
           id: "lyon_zones",
-          label: "Zones de Surveillance",
+          label: "Surveillance Zones",
           type: "category",
           icon: Folder,
           children: [
@@ -144,15 +291,194 @@ export const treeData: TreeNode = {
               children: [
                 {
                   id: "lyon_centre_cam",
-                  label: "Système de Surveillance Intégré",
+                  label: "Integrated Surveillance System",
                   type: "dataset",
                   icon: Camera,
                   metadata: {
                     privacy: "HIGH_SENSITIVE",
                     techniques: ["real_time_masking", "k_anonymity"],
                     formats: ["crowd_flow_analysis", "safety_metrics"],
-                    description:
-                      "Surveillance intégrée avec masquage temps réel",
+                    lastUpdate: "2025-09-15T12:45:00Z",
+                    description: "Integrated surveillance with real-time masking",
+                  },
+                },
+                {
+                  id: "lyon_centre_behavioral",
+                  label: "Crowd Behavior Analysis",
+                  type: "dataset",
+                  icon: Users,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["behavioral_anonymization", "federated_learning"],
+                    formats: ["crowd_dynamics", "anomaly_detection"],
+                    lastUpdate: "2025-09-15T11:30:00Z",
+                    description: "Privacy-preserving crowd behavior pattern analysis",
+                  },
+                },
+              ],
+            },
+            {
+              id: "lyon_zone_perrache",
+              label: "Zone Perrache - Transport Station",
+              type: "zone",
+              icon: Camera,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "active",
+                size: "2.7 GB",
+              },
+              children: [
+                {
+                  id: "lyon_perrache_multimodal",
+                  label: "Multimodal Transport Sensors",
+                  type: "dataset",
+                  icon: Users,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["differential_privacy", "spatial_cloaking"],
+                    formats: ["transit_patterns", "occupancy_forecast"],
+                    lastUpdate: "2025-09-15T10:15:00Z",
+                    description: "Privacy-preserving transit flow analysis",
+                  },
+                },
+                {
+                  id: "lyon_perrache_queue",
+                  label: "Queue Management System",
+                  type: "dataset",
+                  icon: Activity,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["queue_anonymization", "wait_time_estimation"],
+                    formats: ["queue_analytics", "flow_optimization"],
+                    lastUpdate: "2025-09-15T10:45:00Z",
+                    description: "Privacy-aware queue management and flow optimization",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: "lyon_infrastructure",
+          label: "Edge Infrastructure",
+          type: "category",
+          icon: Settings,
+          children: [
+            {
+              id: "lyon_edge_1",
+              label: "Lyon Edge Computing Hub",
+              type: "infrastructure",
+              icon: Database,
+              metadata: {
+                status: "operational",
+                capacity: "78%",
+                techniques: ["edge_analytics", "privacy_by_design"],
+                description: "Regional edge computing hub with privacy-by-design architecture",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "marseille",
+      label: "Marseille",
+      type: "city",
+      icon: MapPin,
+      children: [
+        {
+          id: "marseille_zones",
+          label: "Event & Stadium Zones",
+          type: "category",
+          icon: Folder,
+          children: [
+            {
+              id: "marseille_velodrome",
+              label: "Stade Vélodrome - Sports Events",
+              type: "zone",
+              icon: Users,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "active",
+                size: "8.4 GB",
+              },
+              children: [
+                {
+                  id: "marseille_velodrome_crowd_flow",
+                  label: "Stadium Crowd Flow Analysis",
+                  type: "dataset",
+                  icon: Activity,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["crowd_flow_anonymization", "differential_privacy"],
+                    formats: ["entry_exit_patterns", "bottleneck_detection"],
+                    lastUpdate: "2025-09-14T20:30:00Z",
+                    description: "Anonymized stadium crowd flow for bottleneck prevention",
+                  },
+                },
+                {
+                  id: "marseille_velodrome_panic",
+                  label: "Panic Detection Microphone Array",
+                  type: "dataset",
+                  icon: Mic,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["audio_event_anonymization", "crowd_emotion_masking"],
+                    formats: ["panic_alerts", "crowd_sentiment_analysis"],
+                    lastUpdate: "2025-09-14T20:45:00Z",
+                    description: "Privacy-preserving panic detection through audio analysis",
+                  },
+                },
+                {
+                  id: "marseille_velodrome_evacuation",
+                  label: "Emergency Evacuation Routes",
+                  type: "dataset",
+                  icon: AlertTriangle,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["route_optimization", "capacity_modeling"],
+                    formats: ["evacuation_plans", "exit_capacity_analysis"],
+                    lastUpdate: "2025-09-14T19:15:00Z",
+                    description: "Dynamic evacuation route optimization",
+                  },
+                },
+              ],
+            },
+            {
+              id: "marseille_old_port",
+              label: "Vieux-Port - Festival Area",
+              type: "zone",
+              icon: Camera,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "active",
+                size: "5.1 GB",
+              },
+              children: [
+                {
+                  id: "marseille_port_drone",
+                  label: "Drone Surveillance Network (8 drones)",
+                  type: "dataset",
+                  icon: Eye,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["aerial_anonymization", "dynamic_masking"],
+                    formats: ["aerial_crowd_density", "event_monitoring"],
+                    lastUpdate: "2025-09-15T09:30:00Z",
+                    description: "Privacy-preserving aerial crowd monitoring",
+                  },
+                },
+                {
+                  id: "marseille_port_iot",
+                  label: "IoT Environmental Sensors (32 units)",
+                  type: "dataset",
+                  icon: Thermometer,
+                  metadata: {
+                    privacy: "LOW",
+                    techniques: ["data_aggregation", "temporal_smoothing"],
+                    formats: ["environmental_conditions", "comfort_indices"],
+                    lastUpdate: "2025-09-15T14:10:00Z",
+                    description: "Environmental data correlated with crowd patterns",
                   },
                 },
               ],
@@ -162,8 +488,157 @@ export const treeData: TreeNode = {
       ],
     },
     {
-      id: "techniques_privacy",
-      label: "Techniques de Protection Appliquées",
+      id: "nice",
+      label: "Nice",
+      type: "city",
+      icon: MapPin,
+      children: [
+        {
+          id: "nice_zones",
+          label: "Public Spaces & Events",
+          type: "category",
+          icon: Folder,
+          children: [
+            {
+              id: "nice_promenade",
+              label: "Promenade des Anglais",
+              type: "zone",
+              icon: Camera,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "active",
+                size: "4.6 GB",
+              },
+              children: [
+                {
+                  id: "nice_promenade_5g",
+                  label: "5G Network Analytics",
+                  type: "dataset",
+                  icon: Radio,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["network_anonymization", "traffic_masking"],
+                    formats: ["device_density", "network_load"],
+                    lastUpdate: "2025-09-15T13:00:00Z",
+                    description: "Privacy-preserving 5G network-based crowd estimation",
+                  },
+                },
+                {
+                  id: "nice_promenade_pedestrian",
+                  label: "Pedestrian Flow Sensors",
+                  type: "dataset",
+                  icon: Activity,
+                  metadata: {
+                    privacy: "MODERATE",
+                    techniques: ["trajectory_clustering", "path_anonymization"],
+                    formats: ["pedestrian_flows", "usage_patterns"],
+                    lastUpdate: "2025-09-15T12:15:00Z",
+                    description: "Anonymized pedestrian movement analysis",
+                  },
+                },
+              ],
+            },
+            {
+              id: "nice_carnival",
+              label: "Carnival Event Monitoring",
+              type: "zone",
+              icon: Users,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "seasonal",
+                size: "12.3 GB",
+              },
+              children: [
+                {
+                  id: "nice_carnival_social_media",
+                  label: "Social Media Sentiment Monitoring",
+                  type: "dataset",
+                  icon: Radio,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["text_anonymization", "sentiment_aggregation"],
+                    formats: ["crowd_sentiment", "event_feedback"],
+                    lastUpdate: "2025-09-10T16:00:00Z",
+                    description: "Anonymized social media analysis for crowd sentiment",
+                  },
+                },
+                {
+                  id: "nice_carnival_wearables",
+                  label: "Wearable Device Data (Opt-in)",
+                  type: "dataset",
+                  icon: Activity,
+                  metadata: {
+                    privacy: "HIGH_SENSITIVE",
+                    techniques: ["secure_aggregation", "differential_privacy"],
+                    formats: ["physiological_stress", "crowd_health_metrics"],
+                    lastUpdate: "2025-09-10T15:30:00Z",
+                    description: "Opt-in wearable data for crowd health monitoring",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "toulouse",
+      label: "Toulouse",
+      type: "city", 
+      icon: MapPin,
+      children: [
+        {
+          id: "toulouse_zones",
+          label: "Urban Centers",
+          type: "category",
+          icon: Folder,
+          children: [
+            {
+              id: "toulouse_capitole",
+              label: "Place du Capitole",
+              type: "zone",
+              icon: Camera,
+              metadata: {
+                privacy: "HIGH_SENSITIVE",
+                status: "active",
+                size: "3.8 GB",
+              },
+              children: [
+                {
+                  id: "toulouse_capitole_smart_lighting",
+                  label: "Smart Lighting Crowd Detection",
+                  type: "dataset",
+                  icon: Zap,
+                  metadata: {
+                    privacy: "LOW",
+                    techniques: ["light_sensor_aggregation", "occupancy_estimation"],
+                    formats: ["lighting_patterns", "energy_optimization"],
+                    lastUpdate: "2025-09-15T11:45:00Z",
+                    description: "Smart lighting system with integrated crowd detection",
+                  },
+                },
+                {
+                  id: "toulouse_capitole_air_quality",
+                  label: "Air Quality & Crowd Correlation",
+                  type: "dataset",
+                  icon: Thermometer,
+                  metadata: {
+                    privacy: "LOW",
+                    techniques: ["environmental_aggregation", "correlation_analysis"],
+                    formats: ["air_quality_index", "pollution_crowd_correlation"],
+                    lastUpdate: "2025-09-15T14:00:00Z",
+                    description: "Air quality monitoring correlated with crowd density",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "privacy_techniques",
+      label: "Applied Privacy Techniques",
       type: "category",
       icon: Shield,
       children: [
@@ -173,20 +648,134 @@ export const treeData: TreeNode = {
           type: "technique",
           icon: Shield,
           metadata: {
-            datasets_count: 8,
+            datasets_count: 18,
             epsilon_range: "0.1 - 1.0",
-            description: "Protection probabiliste contre la réidentification",
+            description: "Probabilistic protection against re-identification attacks",
           },
         },
         {
           id: "k_anonymity",
           label: "K-Anonymity",
+          type: "technique", 
+          icon: Shield,
+          metadata: {
+            datasets_count: 24,
+            k_values: "5 - 50",
+            description: "Non-distinguishability guarantee within groups of k individuals",
+          },
+        },
+        {
+          id: "homomorphic_encryption",
+          label: "Homomorphic Encryption",
           type: "technique",
           icon: Shield,
           metadata: {
             datasets_count: 12,
-            k_values: "5 - 50",
-            description: "Garantie de non-distinguabilité dans un groupe",
+            schemes: ["Paillier", "BGV", "CKKS"],
+            description: "Computation on encrypted data without requiring decryption",
+          },
+        },
+        {
+          id: "federated_learning",
+          label: "Federated Learning",
+          type: "technique",
+          icon: Shield,
+          metadata: {
+            datasets_count: 15,
+            frameworks: ["TensorFlow Federated", "PySyft", "Flower"],
+            description: "Distributed machine learning without data centralization",
+          },
+        },
+        {
+          id: "secure_multiparty",
+          label: "Secure Multi-Party Computation",
+          type: "technique",
+          icon: Shield,
+          metadata: {
+            datasets_count: 8,
+            schemes: ["BGW", "GMW", "ABY"],
+            description: "Joint computation on private inputs without revealing them",
+          },
+        },
+        {
+          id: "synthetic_data",
+          label: "Synthetic Data Generation",
+          type: "technique",
+          icon: Shield,
+          metadata: {
+            datasets_count: 14,
+            frameworks: ["GANs", "VAEs", "DP-WGAN"],
+            description: "Privacy-preserving synthetic data generation for analysis",
+          },
+        },
+        {
+          id: "temporal_privacy",
+          label: "Temporal Privacy Protection",
+          type: "technique",
+          icon: Shield,
+          metadata: {
+            datasets_count: 16,
+            techniques: ["temporal_blur", "sliding_window_dp"],
+            description: "Time-based privacy protection for streaming data",
+          },
+        },
+        {
+          id: "spatial_privacy",
+          label: "Spatial Privacy Protection",
+          type: "technique",
+          icon: Shield,
+          metadata: {
+            datasets_count: 20,
+            techniques: ["location_cloaking", "geo_indistinguishability"],
+            description: "Location privacy through spatial obfuscation techniques",
+          },
+        },
+      ],
+    },
+    {
+      id: "crowd_safety_systems",
+      label: "Crowd Safety System Categories",
+      type: "category",
+      icon: AlertTriangle,
+      children: [
+        {
+          id: "real_time_monitoring",
+          label: "Real-time Crowd Monitoring",
+          type: "category",
+          icon: Eye,
+          metadata: {
+            datasets_count: 42,
+            description: "Continuous monitoring systems across all deployment zones",
+          },
+        },
+        {
+          id: "predictive_analytics",
+          label: "Predictive Safety Analytics",
+          type: "category",
+          icon: Activity,
+          metadata: {
+            datasets_count: 28,
+            description: "Machine learning models for crowd behavior prediction",
+          },
+        },
+        {
+          id: "emergency_response",
+          label: "Emergency Response Coordination",
+          type: "category",
+          icon: AlertTriangle,
+          metadata: {
+            datasets_count: 15,
+            description: "Automated emergency detection and response systems",
+          },
+        },
+        {
+          id: "infrastructure_optimization",
+          label: "Infrastructure Optimization",
+          type: "category",
+          icon: Settings,
+          metadata: {
+            datasets_count: 22,
+            description: "Data-driven optimization of crowd management infrastructure",
           },
         },
       ],
